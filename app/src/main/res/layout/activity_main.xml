@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Local Video"
+        android:textSize="28sp"
+        tools:ignore="HardcodedText" />
+
+    <FrameLayout
+        android:id="@+id/localRendererLayout"
+        android:layout_width="@dimen/video_w"
+        android:layout_height="@dimen/video_h"
+        android:background="#9FCBC4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Remote Video"
+        android:textSize="28sp"
+        tools:ignore="HardcodedText" />
+
+    <FrameLayout
+        android:id="@+id/remoteRendererLayout"
+        android:layout_width="@dimen/video_w"
+        android:layout_height="@dimen/video_h"
+        android:background="#9FCBC4" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Logs Video"
+        android:textSize="28sp"
+        tools:ignore="HardcodedText" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
