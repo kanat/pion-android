@@ -7,7 +7,7 @@ import org.webrtc.SessionDescription
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-suspend fun PeerConnection.setRemoteDescription(sessionDescription: RTCSessionDescription): Result<Unit> {
+suspend fun PeerConnection.setRemoteDescription(sessionDescription: RtcSessionDescription): Result<Unit> {
     return suspendCoroutine { cont ->
         setRemoteDescription(
             object : SdpObserver {
@@ -37,7 +37,7 @@ suspend fun PeerConnection.setRemoteDescription(sessionDescription: RTCSessionDe
 
 suspend fun PeerConnection.createAnswer(
     mediaConstraints: MediaConstraints = MediaConstraints()
-): Result<RTCSessionDescription> {
+): Result<RtcSessionDescription> {
     return suspendCoroutine { cont ->
         createAnswer(
             object : SimpleSdpObserver() {
@@ -46,7 +46,7 @@ suspend fun PeerConnection.createAnswer(
                         when (localSdp) {
                             null -> Result.failure(NullPointerException("[createAnswer] description is null"))
                             else -> Result.success(
-                                RTCSessionDescription(
+                                RtcSessionDescription(
                                     type = localSdp.type.canonicalForm(),
                                     sdp = localSdp.description
                                 )
@@ -63,7 +63,7 @@ suspend fun PeerConnection.createAnswer(
     }
 }
 
-suspend fun PeerConnection.setLocalDescription(sessionDescription: RTCSessionDescription): Result<Unit> {
+suspend fun PeerConnection.setLocalDescription(sessionDescription: RtcSessionDescription): Result<Unit> {
     return suspendCoroutine { cont ->
         setLocalDescription(
             object : SdpObserver {
