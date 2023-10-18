@@ -45,6 +45,8 @@ android {
     }
 }
 dependencies {
+    implementation(files("libs/libwebrtc-m114.2.aar"))
+
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
@@ -62,7 +64,7 @@ dependencies {
     implementation "androidx.compose.material:material-icons-extended:1.2.1"
 
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation 'com.github.webrtc-sdk:android:104.5112.10'
+    //implementation 'com.github.webrtc-sdk:android:104.5112.10'
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.0'
 
 

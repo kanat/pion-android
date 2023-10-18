@@ -74,6 +74,11 @@ class MainActivity : AppCompatActivity() {
     private val mutex = Mutex()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        PeerConnectionFactory.initialize(
+            PeerConnectionFactory.InitializationOptions.builder(applicationContext)
+                .setInjectableLogger(InjectableLogger, Logging.Severity.LS_VERBOSE)
+                .createInitializationOptions()
+        )
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -176,7 +181,7 @@ class MainActivity : AppCompatActivity() {
         val httpClient = OkHttpClient.Builder().build()
         val request = Request
             .Builder()
-            .url("ws://192.168.1.94:8080/websocket")
+            .url("ws://192.168.1.73:8080/websocket")
             .build()
         webSocket = httpClient.newWebSocket(request, object : LoggableWebSocketListener() {
             override fun onMessage(webSocket: WebSocket, raw: String) {
@@ -232,11 +237,6 @@ private fun Context.buildPeerConnectionFactory(
     videoDecoderFactory: VideoDecoderFactory,
     videoEncoderFactory: VideoEncoderFactory,
 ): PeerConnectionFactory {
-    PeerConnectionFactory.initialize(
-        PeerConnectionFactory.InitializationOptions.builder(applicationContext)
-            .setInjectableLogger(InjectableLogger, Logging.Severity.LS_VERBOSE)
-            .createInitializationOptions()
-    )
 
     return PeerConnectionFactory.builder()
         .setVideoDecoderFactory(videoDecoderFactory)
@@ -250,6 +250,9 @@ private fun Context.buildPeerConnectionFactory(
                 .setAudioTrackErrorCallback(AudioErrorLogger)
                 .setAudioRecordStateCallback(AudioErrorLogger)
                 .setAudioTrackStateCallback(AudioErrorLogger)
+                .setAudioRecordDataCallback {audioFormat, channelCount, sampleRate, audioBuffer ->
+                    logV(TAG) { "[onAudioDataRecorded] audioFormat: $audioFormat, channelCount: $channelCount, sampleRate: $sampleRate" }
+                }
                 .createAudioDeviceModule().also {
                     it.setMicrophoneMute(false)
                     it.setSpeakerMute(false)
