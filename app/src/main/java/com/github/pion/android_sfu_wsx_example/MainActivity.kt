@@ -74,6 +74,7 @@ class MainActivity : AppCompatActivity() {
     private val mutex = Mutex()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        logI(TAG) { "[onCreate] savedInstanceState: $savedInstanceState" }
         PeerConnectionFactory.initialize(
             PeerConnectionFactory.InitializationOptions.builder(applicationContext)
                 .setInjectableLogger(InjectableLogger, Logging.Severity.LS_VERBOSE)
@@ -251,7 +252,7 @@ private fun Context.buildPeerConnectionFactory(
                 .setAudioRecordStateCallback(AudioErrorLogger)
                 .setAudioTrackStateCallback(AudioErrorLogger)
                 .setAudioRecordDataCallback {audioFormat, channelCount, sampleRate, audioBuffer ->
-                    logV(TAG) { "[onAudioDataRecorded] audioFormat: $audioFormat, channelCount: $channelCount, sampleRate: $sampleRate" }
+                    //logV(TAG) { "[onAudioDataRecorded] audioFormat: $audioFormat, channelCount: $channelCount, sampleRate: $sampleRate" }
                 }
                 .createAudioDeviceModule().also {
                     it.setMicrophoneMute(false)
