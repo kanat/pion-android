@@ -1,14 +1,14 @@
 package com.github.pion.android_sfu_wsx_example.webrtc
 
 import com.github.pion.android_sfu_wsx_example.logging.logD
-import org.webrtc.CandidatePairChangeEvent
-import org.webrtc.DataChannel
-import org.webrtc.IceCandidate
-import org.webrtc.IceCandidateErrorEvent
-import org.webrtc.MediaStream
-import org.webrtc.PeerConnection
-import org.webrtc.RtpReceiver
-import org.webrtc.RtpTransceiver
+import io.getstream.webrtc.CandidatePairChangeEvent
+import io.getstream.webrtc.DataChannel
+import io.getstream.webrtc.IceCandidate
+import io.getstream.webrtc.IceCandidateErrorEvent
+import io.getstream.webrtc.MediaStream
+import io.getstream.webrtc.PeerConnection
+import io.getstream.webrtc.RtpReceiver
+import io.getstream.webrtc.RtpTransceiver
 
 private const val TAG = "Pion-ConnObserver"
 

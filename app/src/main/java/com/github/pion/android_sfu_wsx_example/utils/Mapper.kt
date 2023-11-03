@@ -3,7 +3,7 @@ package com.github.pion.android_sfu_wsx_example.utils
 import com.github.pion.android_sfu_wsx_example.webrtc.RtcSessionDescription
 import com.github.pion.android_sfu_wsx_example.ws.WsIceCandidate
 import com.github.pion.android_sfu_wsx_example.ws.WsSessionDescription
-import org.webrtc.IceCandidate as RtcIceCandidate
+import io.getstream.webrtc.IceCandidate as RtcIceCandidate
 
 fun RtcSessionDescription.toWS() = WsSessionDescription(
     type = type,

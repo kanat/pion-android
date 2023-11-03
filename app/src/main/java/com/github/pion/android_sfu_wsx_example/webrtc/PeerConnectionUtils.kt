@@ -1,9 +1,9 @@
 package com.github.pion.android_sfu_wsx_example.webrtc
 
-import org.webrtc.MediaConstraints
-import org.webrtc.PeerConnection
-import org.webrtc.SdpObserver
-import org.webrtc.SessionDescription
+import io.getstream.webrtc.MediaConstraints
+import io.getstream.webrtc.PeerConnection
+import io.getstream.webrtc.SdpObserver
+import io.getstream.webrtc.SessionDescription
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 

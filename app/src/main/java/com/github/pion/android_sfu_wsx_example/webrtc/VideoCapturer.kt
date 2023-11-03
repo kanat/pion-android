@@ -2,11 +2,11 @@ package com.github.pion.android_sfu_wsx_example.webrtc
 
 import android.content.Context
 import com.github.pion.android_sfu_wsx_example.logging.logD
-import org.webrtc.Camera1Enumerator
-import org.webrtc.Camera2Enumerator
-import org.webrtc.CameraEnumerator
-import org.webrtc.CameraVideoCapturer
-import org.webrtc.VideoCapturer
+import io.getstream.webrtc.Camera1Enumerator
+import io.getstream.webrtc.Camera2Enumerator
+import io.getstream.webrtc.CameraEnumerator
+import io.getstream.webrtc.CameraVideoCapturer
+import io.getstream.webrtc.VideoCapturer
 
 private const val TAG = "Video-Capturer"
 

@@ -37,21 +37,21 @@ import kotlinx.serialization.json.Json
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
-import org.webrtc.DefaultVideoDecoderFactory
-import org.webrtc.EglBase
-import org.webrtc.HardwareVideoEncoderFactory
-import org.webrtc.Logging
-import org.webrtc.MediaConstraints
-import org.webrtc.MediaStream
-import org.webrtc.PeerConnection
-import org.webrtc.PeerConnectionFactory
-import org.webrtc.SimulcastVideoEncoderFactory
-import org.webrtc.SoftwareVideoEncoderFactory
-import org.webrtc.SurfaceTextureHelper
-import org.webrtc.SurfaceViewRenderer
-import org.webrtc.VideoDecoderFactory
-import org.webrtc.VideoEncoderFactory
-import org.webrtc.audio.JavaAudioDeviceModule
+import io.getstream.webrtc.DefaultVideoDecoderFactory
+import io.getstream.webrtc.EglBase
+import io.getstream.webrtc.HardwareVideoEncoderFactory
+import io.getstream.webrtc.Logging
+import io.getstream.webrtc.MediaConstraints
+import io.getstream.webrtc.MediaStream
+import io.getstream.webrtc.PeerConnection
+import io.getstream.webrtc.PeerConnectionFactory
+import io.getstream.webrtc.SimulcastVideoEncoderFactory
+import io.getstream.webrtc.SoftwareVideoEncoderFactory
+import io.getstream.webrtc.SurfaceTextureHelper
+import io.getstream.webrtc.SurfaceViewRenderer
+import io.getstream.webrtc.VideoDecoderFactory
+import io.getstream.webrtc.VideoEncoderFactory
+import io.getstream.webrtc.audio.JavaAudioDeviceModule
 
 private const val TAG = "Main-View"
 
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
     private val eglBase: EglBase by lazy { EglBase.create() }
     private val videoDecoderFactory by lazy { buildVideoDecoderFactory(eglBase) }
     private val videoEncoderFactory by lazy { buildVideoEncoderFactory(eglBase) }
-    private val peerConnectionFactory by lazy { buildPeerConnectionFactory(videoDecoderFactory, videoEncoderFactory) }
+    private val peerConnectionFactory by lazy { buildPeerConnectionFactory(videoEncoderFactory, videoDecoderFactory) }
     private val surfaceTextureHelper by lazy { SurfaceTextureHelper.create("CaptureThread", eglBase.eglBaseContext) }
 
     private val videoW by lazy { resources.getDimensionPixelSize(R.dimen.video_w) }
@@ -176,7 +176,7 @@ class MainActivity : AppCompatActivity() {
         val httpClient = OkHttpClient.Builder().build()
         val request = Request
             .Builder()
-            .url("ws://192.168.1.94:8080/websocket")
+            .url("ws://192.168.1.73:8080/websocket")
             .build()
         webSocket = httpClient.newWebSocket(request, object : LoggableWebSocketListener() {
             override fun onMessage(webSocket: WebSocket, raw: String) {
@@ -229,15 +229,9 @@ private fun buildVideoDecoderFactory(eglBase: EglBase) = DefaultVideoDecoderFact
 )
 
 private fun Context.buildPeerConnectionFactory(
-    videoDecoderFactory: VideoDecoderFactory,
     videoEncoderFactory: VideoEncoderFactory,
+    videoDecoderFactory: VideoDecoderFactory,
 ): PeerConnectionFactory {
-    PeerConnectionFactory.initialize(
-        PeerConnectionFactory.InitializationOptions.builder(applicationContext)
-            .setInjectableLogger(InjectableLogger, Logging.Severity.LS_VERBOSE)
-            .createInitializationOptions()
-    )
-
     return PeerConnectionFactory.builder()
         .setVideoDecoderFactory(videoDecoderFactory)
         .setVideoEncoderFactory(videoEncoderFactory)

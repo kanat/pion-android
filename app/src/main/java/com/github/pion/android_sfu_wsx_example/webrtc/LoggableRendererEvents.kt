@@ -1,7 +1,7 @@
 package com.github.pion.android_sfu_wsx_example.webrtc
 
 import com.github.pion.android_sfu_wsx_example.logging.logD
-import org.webrtc.RendererCommon
+import io.getstream.webrtc.RendererCommon
 
 private const val TAG = "Loggable-RE"
 

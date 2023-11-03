@@ -5,8 +5,8 @@ import com.github.pion.android_sfu_wsx_example.logging.logE
 import com.github.pion.android_sfu_wsx_example.logging.logI
 import com.github.pion.android_sfu_wsx_example.logging.logV
 import com.github.pion.android_sfu_wsx_example.logging.logW
-import org.webrtc.Loggable
-import org.webrtc.Logging
+import io.getstream.webrtc.Loggable
+import io.getstream.webrtc.Logging
 
 object InjectableLogger : Loggable {
 

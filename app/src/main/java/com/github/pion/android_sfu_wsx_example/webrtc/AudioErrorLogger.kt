@@ -2,7 +2,7 @@ package com.github.pion.android_sfu_wsx_example.webrtc
 
 import com.github.pion.android_sfu_wsx_example.logging.logD
 import com.github.pion.android_sfu_wsx_example.logging.logW
-import org.webrtc.audio.JavaAudioDeviceModule
+import io.getstream.webrtc.audio.JavaAudioDeviceModule
 
 object AudioErrorLogger : JavaAudioDeviceModule.AudioRecordErrorCallback,
     JavaAudioDeviceModule.AudioTrackErrorCallback,
